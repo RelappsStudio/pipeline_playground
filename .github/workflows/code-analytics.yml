@@ -15,31 +15,29 @@ jobs:
           flutter-version: '3.19.5'
           channel: 'stable'
           architecture: x64
-  pub-get:
-    name: pub-get
-    runs-on: ubuntu-latest
-    needs: flutter-install
-    steps: 
-      - name: Pub get
-        run: flutter pub get
   code-analysis:
     name: analyze
     runs-on: ubuntu-latest
-    needs: flutter-install
     steps:
       - uses: actions/checkout@v3
+      steps:
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.5'
+          channel: 'stable'
+          architecture: x64
       - name: analyze code
         run: dart analyze .
   security-scan:
     name: security-scan
     runs-on: ubuntu-latest
-    needs: flutter-install
     steps:
       - uses: actions/checkout@v3
       - name: mobsfscan
         uses: MobSF/mobsfscan@main
         with:
-          args: '. --html'
+          args: '. --html > results.html'
       - name: HTML Preview
         id: html_preview
         uses: pavi2410/html-preview-action@v2
