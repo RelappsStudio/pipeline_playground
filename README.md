@@ -1,3 +1,5 @@
+<a href="https://github.com/RelappsStudio/pipeline_playground/actions"><img src="https://github.com/RelappsStudio/pipeline_playground/workflows/test-my-app/badge.svg" alt="Build Status"></a>
+
 # pipeline_playground
 
 A new Flutter project.
