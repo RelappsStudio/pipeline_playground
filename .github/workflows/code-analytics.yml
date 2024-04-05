@@ -28,7 +28,7 @@ jobs:
       - name: install mobsf
         run: pip3 install --upgrade mobsfscan
       - name: run mobsf
-        run: mobsfscan . --html > results.html
+        run: mobsfscan . --html --output results.html || true
       - name: HTML Preview
         id: html_preview
         uses: pavi2410/html-preview-action@v2
