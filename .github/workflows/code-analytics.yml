@@ -16,6 +16,8 @@ jobs:
           flutter-version: '3.19.5'
           channel: 'stable'
           architecture: x64
+      - name: Pub get
+        run: flutter pub get
       - name: analyze code
         run: dart analyze .
   security-scan:
@@ -23,12 +25,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: mobsfscan
-        uses: MobSF/mobsfscan@main
-        with:
-          args: '. --html > results.html'
+      - name: install mobsf
+        run: pip3 install --upgrade mobsfscan
+      - name: run mobsf
+        run: mobsfscan . --html > results.html
       - name: HTML Preview
         id: html_preview
         uses: pavi2410/html-preview-action@v2
         with:
           html_file: 'results.html'
+      # - name: mobsfscan
+      #   uses: MobSF/mobsfscan@main
+      #   with:
+      #     args: '. --html > results.html'
+      # - name: HTML Preview
+      #   id: html_preview
+      #   uses: pavi2410/html-preview-action@v2
+      #   with:
+      #     html_file: 'results.html'
