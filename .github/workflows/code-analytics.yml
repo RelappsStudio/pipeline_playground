@@ -5,22 +5,11 @@ name: code-analytics
 on: [push]
 
 jobs:
-  flutter-install:
-    name: install-flutter
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.19.5'
-          channel: 'stable'
-          architecture: x64
   code-analysis:
     name: analyze
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      steps:
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
