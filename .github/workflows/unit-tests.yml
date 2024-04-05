@@ -1,11 +1,11 @@
 # The name of the workflow
-name: first-test
+name: unit-tests
 
 # The event that triggers the workflow
 on: [push]
 
 jobs:
-  test:
+  unit-tests:
     name: test
     runs-on: ubuntu-latest
     steps:
@@ -18,7 +18,5 @@ jobs:
           architecture: x64
       - name: Check Code Format
         run: dart format . --set-exit-if-changed
-      - name: Generate code
-        run: dart run build_runner build
       - name: Run test
         run: flutter test

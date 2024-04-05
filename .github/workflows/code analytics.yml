@@ -1,16 +1,22 @@
 # The name of the workflow
-name: first-test
+name: unit-tests
 
 # The event that triggers the workflow
 on: [push]
 
 jobs:
-  dart-analyze:
-    - name: Install Flutter
-      uses: subosito/flutter-action@v2
-      with:
-        flutter-version: '3.19.5'
-        channel: 'stable'
-        architecture: x64
-    - name: Analyze code
-      run: dart analyze .
+  unit-tests:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.5'
+          channel: 'stable'
+          architecture: x64
+      - name: Check Code Format
+        run: dart format . --set-exit-if-changed
+      - name: Run test
+        run: dart analyze .
