@@ -23,7 +23,6 @@ jobs:
   security-scan:
     name: widget-tests
     runs-on: ubuntu-latest
-    needs: analysis
     steps:
       - uses: actions/checkout@v3
       - name: mobsfscan
