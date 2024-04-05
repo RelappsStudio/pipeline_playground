@@ -13,7 +13,7 @@ jobs:
       - name: Echo Folder Contents
         run: echo $(ls)
   unit-tests:
-    - name: Install Flutter
+    - name: install-flutter
       uses: subosito/flutter-action@v2
       with:
         flutter-version: '3.19.5'
