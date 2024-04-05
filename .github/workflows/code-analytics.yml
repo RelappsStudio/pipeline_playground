@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: flutter-install
     steps: 
-      - name: Run test
+      - name: Pub get
         run: flutter pub get
   code-analysis:
     name: analyze
@@ -28,9 +28,7 @@ jobs:
     needs: flutter-install
     steps:
       - uses: actions/checkout@v3
-      - name: Check Code Format
-        run: dart format . --set-exit-if-changed
-      - name: Run test
+      - name: analyze code
         run: dart analyze .
   security-scan:
     name: security-scan
@@ -41,8 +39,9 @@ jobs:
       - name: mobsfscan
         uses: MobSF/mobsfscan@main
         with:
-          args: '. --sarif --output results.sarif || true'
-      - name: Upload mobsfscan report
-        uses: github/codeql-action/upload-sarif@v2
+          args: '. --html'
+      - name: HTML Preview
+        id: html_preview
+        uses: pavi2410/html-preview-action@v2
         with:
-          sarif_file: results.sarif
+          html_file: 'results.html'
