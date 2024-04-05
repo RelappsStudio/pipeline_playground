@@ -1,0 +1,23 @@
+# The name of the workflow
+name: first-test
+
+# The event that triggers the workflow
+on: [push]
+
+jobs:
+  verify-files:
+    # The name of the job
+    name: debug-verify-files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Folder Contents
+        run: echo $(ls)
+  unit-tests:
+    - name: Install Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.19.5'
+        channel: 'stable'
+        architecture: x64
+    - name: Analyze code
+      run: flutter test --coverage
