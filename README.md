@@ -1,5 +1,5 @@
 <a href="https://github.com/RelappsStudio/pipeline_playground/actions"><img src="https://github.com/RelappsStudio/pipeline_playground/workflows/unit-tests/badge.svg" alt="Build Status"></a>
-<a href="https://github.com/RelappsStudio/pipeline_playground/actions"><img src="https://github.com/RelappsStudio/pipeline_playground/workflows/code-scans/badge.svg" alt="Build Status"></a>
+<a href="https://github.com/RelappsStudio/pipeline_playground/actions"><img src="https://github.com/RelappsStudio/pipeline_playground/workflows/code-analytics/badge.svg" alt="Build Status"></a>
 
 
 # pipeline_playground
